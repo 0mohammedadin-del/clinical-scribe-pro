@@ -1,7 +1,4 @@
-"use client";
-
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { FileText, Users, BarChart3, LogIn, Stethoscope } from "lucide-react";
 
@@ -12,7 +9,7 @@ const navigation = [
 ];
 
 export function Navigation() {
-  const pathname = usePathname();
+  const location = useLocation();
 
   return (
     <nav className="flex space-x-1 bg-card rounded-lg p-1 shadow-soft">
@@ -23,11 +20,11 @@ export function Navigation() {
       
       <div className="flex space-x-1 ml-auto">
         {navigation.map((item) => {
-          const isActive = pathname === item.href;
+          const isActive = location.pathname === item.href;
           return (
             <Link
               key={item.name}
-              href={item.href}
+              to={item.href}
               className={cn(
                 "flex items-center space-x-2 px-4 py-2 text-sm font-medium rounded-md transition-all duration-200",
                 isActive
@@ -42,7 +39,7 @@ export function Navigation() {
         })}
         
         <Link
-          href="/login"
+          to="/login"
           className="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary rounded-md transition-all duration-200"
         >
           <LogIn className="h-4 w-4" />
