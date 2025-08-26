@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
@@ -5,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { CorrectionsList } from "./CorrectionsList";
 import { DetectedTerms } from "./DetectedTerms";
 import { Settings, Plus, ExternalLink } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 interface RightRailTabsProps {
   doctorId: string;
@@ -26,7 +28,7 @@ export function RightRailTabs({ doctorId }: RightRailTabsProps) {
           <TabsContent value="corrections" className="p-4 space-y-4">
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-medium">Auto-Corrections</h3>
-              <Link to="/doctor">
+              <Link href="/doctor">
                 <Button variant="outline" size="sm">
                   <ExternalLink className="h-4 w-4 mr-1" />
                   Go to Doctor Page
